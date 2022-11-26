@@ -118,6 +118,10 @@ def remove_contain_terminal_variable(k):
 
 # main function to convert cyk to cnf
 def get_set_of_production():
+    global RESULT
+    global VARIABLE_LIST
+    global TERMINAL_LIST
+    RESULT.clear()
     # read file and make dictionary
     f = open("./set_of_production.txt", "r", encoding="utf-8")
     for line in f:
