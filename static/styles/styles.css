@@ -1,1 +1,33 @@
 /* style.css */
+ul,li{
+    list-style-type: none;
+    padding: 0 !important;
+}
+
+#app{
+  background-image: none;
+  margin-bottom: 0 !important;
+}
+
+.jumbotron {
+  background-image: url("../images/bg.png");
+  background-size: cover;
+  margin-bottom: 0 !important;
+}
+
+.container{
+  margin-top: 30px;
+}
+
+.imganggota img, .imgcfg img{
+  width: 225px !important;
+}
+
+.tablefilling{
+  border-width: 3px !important;
+  border-color: #343a40 !important;
+}
+
+.stringsymbol{
+  border: none !important;
+}
