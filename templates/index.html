@@ -1,7 +1,79 @@
 {% extends "base.html" %}
-{% block title %} CFG-CYK {% endblock %}
+{% block title %} CFG-CYK | Beranda {% endblock %}
 {% block body %}
-<main>
-    <h1 class="text-primary">Hello, World!</h1>
-</main>
+<!-- Jumbotron -->
+<div class="jumbotron text-light text-center">
+    <h1>Implementasi CFG dengan CYK</h1>
+    <p>Mata Kuliah Teori Bahasa & Otomata</p>
+</div>
+<!-- Akhir Jumbotron -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow sticky-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Beranda <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/aplikasi">Aplikasi</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- Akhir Navbar -->
+<!-- Container 1 -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Kelompok-5</h3>
+            <h5>Anggota:</h5>
+            <div class="imganggota">
+                <img src="{{ url_for('static', filename='images/togeth3.jpg') }}" />
+            </div>
+            <p>Antonius Ata - 2108561080</p>
+            <p>Putu Widyantara - 2108561005</p>
+            <p>Kevin Moses - 2108561100</p>
+            <p>Yoga Laksana - 2108561120</p>
+            <hr class="d-sm-none" />
+        </div>
+        <!-- Akhir Container 1 -->
+        <!-- Container 2 -->
+        <div class="col-sm-8 pb-4 mb-5">
+            <h2>Context Free Grammar & Algoritma CYK</h2>
+            <h4>Teori Bahasa & Otomata</h4>
+            <div class="imgcfg text-center"><img src="{{ url_for('static', filename='images/tanyapic1.png') }}" /></div>
+            <br />
+            <h5>Context Free Grammar (CFG) :</h5>
+            <p>
+                Context Free Grammar (CFG) atau Tata Bahasa Bebas Konteks adalah salah satu tata bahasa formal yang
+                digunakan untuk spesifikasi struktur sintaks bahasa pemrograman serta basis beragam skema spesifikasi
+                translasi. Context Free Grammar (CFG) juga merupakan suatu metode rekursif yang paling sederhana untuk
+                menspesifikasikan aturan-aturan dalam menyusun string dari bahasanya.
+            </p>
+            <br />
+            <h5>Algoritma CYK :</h5>
+            <p>
+                Algoritma CYK adalah algoritma untuk menentukan apakah suatu string dapat diterima oleh suatu tata
+                bahasa bebas-konteks (CFG) yang sudah dinormalisasi atau dikonversi dalam bentuk Chomsky Normal Form
+                (CNF).
+            </p>
+            <a href="/aplikasi">
+                <button class="btn btn-dark">Coba Aplikasi</button>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- Akhir Container 2 -->
+<!-- footer -->
+<section id="Source Code"></section>
+<footer class="bg-dark text-white text-center pb-1">
+    <p>Source Code: <i class="bi bi-github text-light"></i>
+        <a href="https://github.com/putuwaw/cfg-cyk" class="text-white fw-bold"> Kelompok-5</a>
+    </p>
+</footer>
+<!-- Akhir Footer -->
 {% endblock %}
