@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %} CFG-CYK | Aplikasi {% endblock %}
+{% block body %}
+<section id="app" class="jumbotron text-center mb-5 pt-5 pb-4">
+    <h1 class="display-4">Aplikasi dari CFG</h1>
+    <p class="lead">Mata Kuliah Teori Bahasa & Otomata</p>
+</section>
+<!-- Akhir Jumbotroon -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow sticky-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Beranda</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/aplikasi">Aplikasi <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- Akhir Navbar -->
+<!-- Project String & Form DFA -->
+<div class="container">
+    <div class="row text-center mb-4 pt-5">
+        <div class="col">
+            <h3>Implementasi CFG menggunakan Algoritma CYK dengan Metode Table Filling</h3>
+        </div>
+    </div>
+    <form action="" method="post" onsubmit="return validate_form()" class="mt-5 mb-3 pb-3 pt-4">
+        <div class="form-group">
+            <label for="string">String</label>
+            <input type="text" class="form-control" name="string" id="string" aria-describedby="StringHelp" required autocomplete="off">
+            <small id="StringHelp" class="form-text text-muted">Masukkan string dengan kombinasi a dan/atau b, contoh:
+                abab, bb, aaa</small>
+        </div>
+        <button type="submit" name="submit" class="btn btn-primary">Cek String</button>
+    </form>
+    <!-- Result -->
+    {% if isSubmit %}
+        <section>
+            <hr>
+            {% if isAccepted %}
+                <h3>Hasil: 
+                    <button class="btn btn-success">Valid</button>
+                </h3>
+                <p class="text-success">String <strong>{{ string }}</strong> valid.</p>
+                {% else %}
+                <h3>Hasil: 
+                    <button class="btn btn-danger">Tidak Valid</button>
+                </h3> 
+                <p class="text-danger">String <strong>{{ string }}</strong> tidak valid.</p>
+            {% endif %}
+            <!-- set of production -->
+            <h3>Set of Production</h3>
+            <ul>
+                <li>
+                    S → ASA | aB
+                </li>
+                <li>
+                    A → B | S
+                </li>
+                <li>
+                    B → b | &epsilon;
+                </li>
+            </ul>
+            <!-- minimized set of production -->
+            <h3>Hasil Konversi CFG ke CNF</h3>
+            <ul>
+                {%- for key, value in convert.items() -%}
+                    <li>
+                        {{ key }} → {{ " | ".join(value) }}
+                    </li>
+                {%- endfor -%}
+            </ul>
+            <!-- table filling -->
+            <h3>Final Triangular Table</h3>
+            <table class="table table-bordered table-sm text-center" style="border-width: 0px;">
+                <tbody>
+                    {%- for i in range(1, lenString+1)|reverse -%}
+                        <tr>
+                            {%- for j in range(i, lenString+1) -%}
+                                {% if table[(j-i+1, j)]|length == 0 %}
+                                    <td class="tablefilling">&emptyset;</td>
+                                {% else %}
+                                    <td class="tablefilling">{ {{ ", ".join(table[(j-i+1, j)]) }} }</td>
+                                {% endif %}
+                            {%- endfor -%}
+                        </tr>
+                    {%- endfor -%}
+                    <tr>
+                        {%- for i in string -%}
+                            <td class="font-weight-bold stringsymbol">{{i}}</td>
+                        {%- endfor -%}
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </section>
+    {% endif %}
+</div>
+<!-- Akhir Project String & Form DFA -->
+
+<!-- footer -->
+<section id="Source Code"></section>
+<footer class="bg-dark text-white text-center pb-2">
+    <p>Source Code: <i class="bi bi-github text-light"></i><a href="https://github.com/putuwaw/cfg-cyk"
+            class="text-white fw-bold"> Kelompok-5</a></p>
+</footer>
+{% endblock %}
